@@ -1,6 +1,5 @@
 #pragma once
 #include <SDL2/SDL.h>
-#include <SDL_stdinc.h>
 
 namespace ScreenP{
 
