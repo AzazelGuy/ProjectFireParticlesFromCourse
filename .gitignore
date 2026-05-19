@@ -1,12 +1,56 @@
-CMakeLists.txt.user
+# =========================
+# CMake Build Directories
+# =========================
+build/
+out/
+cmake-build-*/
+CMakeFiles/
 CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
-CTestTestfile.cmake
-_deps
-CMakeUserPresets.json
+CPackConfig.cmake
+CPackSourceConfig.cmake
+_deps/
+
+# =========================
+# Compiled Output
+# =========================
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+
+# =========================
+# Ninja / Make
+# =========================
+Makefile
+*.ninja
+.ninja_deps
+.ninja_log
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+*.code-workspace
+
+# =========================
+# macOS / Linux / Windows
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Source — always included
+# =========================
+# (src/ is NOT ignored — tracked by default)
+!src/
