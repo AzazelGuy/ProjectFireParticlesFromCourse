@@ -98,4 +98,41 @@ namespace ScreenP
         SDL_DestroyWindow(m_window);
         SDL_Quit();
     }
+
+    void Screen::boxBlur()
+    {
+        Uint32 *tempBuffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
+        memcpy(tempBuffer, m_buffer, SCREEN_WIDTH * SCREEN_HEIGHT*sizeof(Uint32));
+
+        for (int y = 0; y < SCREEN_HEIGHT; y++) {
+            for (int x = 0; x < SCREEN_WIDTH; x++) {
+                int redTotal = 0;
+                int greenTotal = 0;
+                int blueTotal = 0;
+
+                for (int row = -1; row <= 1; row++) {
+                    for (int col = -1; col <= 1; col++) {
+                        int currentX = x + col;
+                        int currentY = y + row;
+
+                        if (currentX >= 0 && currentX < SCREEN_WIDTH && currentY >= 0 && currentY < SCREEN_HEIGHT) {
+                            Uint32 color = tempBuffer[currentY * SCREEN_WIDTH + currentX];
+
+                            redTotal += (color & 0xFF000000) >> 24;
+                            greenTotal += (color & 0x00FF0000) >> 16;
+                            blueTotal += (color & 0x0000FF00) >> 8;
+                        }
+                    }
+                }
+
+                Uint8 red = redTotal / 9;
+                Uint8 green = greenTotal / 9;
+                Uint8 blue = blueTotal / 9;
+
+                setPixel(x, y, red, green, blue);
+            }
+        }
+
+        delete[] tempBuffer;
+    }
 }

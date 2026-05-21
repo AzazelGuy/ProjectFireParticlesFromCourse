@@ -11,8 +11,9 @@ namespace SwarmP{
             }
 
             ParticlesP::Particle* getParticles() { return m_particles; }
-            void update();
+            void update(int elapsed);
         private:
             ParticlesP::Particle* m_particles;
+            int lastTime = 0;
     };
 }

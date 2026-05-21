@@ -10,6 +10,6 @@ namespace ParticlesP{
             double m_direction;
         public:
             Particle();
-            void update();
+            void update(int interval);
     };
 }

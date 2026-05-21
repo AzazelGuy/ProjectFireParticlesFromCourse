@@ -5,8 +5,8 @@ namespace ScreenP{
 
     class Screen{
         public:
-            const static int SCREEN_WIDTH = 1280;
-            const static int SCREEN_HEIGHT = 720;
+            const static int SCREEN_WIDTH = 640;
+            const static int SCREEN_HEIGHT = 460;
         private:
             SDL_Window *m_window;
             SDL_Renderer *m_renderer;
@@ -22,5 +22,6 @@ namespace ScreenP{
             void clear() {
                 memset(m_buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT*sizeof(Uint32));
             }
+            void boxBlur();
     };
 }
